@@ -15,6 +15,7 @@ int main(){
         switch (choice)
         {
             case 1:
+                printf("hello world");
                 printf("Create a new new tickets\n");
                 // hàm tạo vé trong ticket_create.c
                 create_ticket(tickets, &current_id);
