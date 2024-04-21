@@ -18,6 +18,7 @@ int main(){
                 printf("Create a new new tickets\n");
                 // hàm tạo vé trong ticket_create.c
                 create_ticket(tickets, &current_id);
+                save_data(tickets, &current_id);
                 break;
             case 2:
                 // hàm loại bỏ vé thông qua ID của vé

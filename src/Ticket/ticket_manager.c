@@ -3,6 +3,8 @@
 
 
 void create_ticket(Ticket tickets[], int *current_id){
+    printf("Enter ticket ID: ");
+    scanf("%s", &tickets[*current_id].ticket_id);
     printf("Enter buyer info: ");
     scanf("%s", &tickets[*current_id].buyer_info);
     printf("Enter booking time: ");
@@ -15,10 +17,7 @@ void create_ticket(Ticket tickets[], int *current_id){
     scanf("%s", &tickets[*current_id].flight_number);
     printf("Enter seat number: ");  
     scanf("%s", &tickets[*current_id].seat_number);
-    printf("Enter ticket ID: ");
-    scanf("%s", &tickets[*current_id].ticket_id);
     (*current_id)++;
-    printf("hello world");
 }
 
 void remove_ticket(Ticket tickets[], int *current_id) {
@@ -47,8 +46,8 @@ void showAll(Ticket tickets[], int *current_id) {
     printf("List of tickets\n");
     for (int i = 0; i < *current_id; i++)
     {
-        printf("%-10s|%-8s|%6.0f|%-7s|%-10s|%s|%-10s|\n", tickets[i].buyer_info, 
+        printf("%-10s|%-10s|%-10s|%-6.1f|%-10s|%-10s|%-5s|\n",tickets[i].ticket_id,tickets[i].buyer_info, 
         tickets[i].booking_time, tickets[i].price, tickets[i].classification,
-        tickets[i].flight_number, tickets[i].seat_number, tickets[i].ticket_id);
+        tickets[i].flight_number, tickets[i].seat_number);
     }
 }

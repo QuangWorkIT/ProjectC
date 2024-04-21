@@ -22,5 +22,6 @@ typedef struct
 
 void create_ticket(Ticket tickets[], int *current_id);
 void remove_ticket(Ticket tickets[], int *current_id);
+void save_data(Ticket tickets[], int *current_id);
 void showAll(Ticket tickets[], int *current_id);
 #endif
