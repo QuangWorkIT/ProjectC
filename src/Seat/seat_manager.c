@@ -151,37 +151,125 @@ void createSeat(Flight *flight) {
         strcpy(flight->seats[i].Passengername, ""); 
     }
 }
+int main() {
+    flights = (Flight *)malloc(MAX_FLIGHTS * sizeof(Flight));
+    if (flights == NULL) {
+        printf("Memory allocation failed for flights.\n");
+        return 1;
+    }
+    numFlights = 0;
+    manageFlights();
+    free(flights);
+    return 0;
+}
 
-void managePassengers(Flight *flights, int numFlights, Passenger *passengers, int *numPassengers) {
+
+void manageSeats() {
   while (1) {
-    int choice;
+    int choice, flightNumber;
 
-    printf("\nPassenger Management\n");
-    printf("1. Book Ticket\n");
-    printf("2. Cancel Ticket\n");
-    printf("3. Modify Passenger Information\n");
+    printf("\nSeat Management\n");
+    printf("1. Add Seat\n");
+    printf("2. Delete Seat\n");
+    printf("3. Modify Seat Information\n");
     printf("4. Back to Main Menu\n");
     printf("Enter your choice: ");
     scanf("%d", &choice);
 
-    switch (choice) {
-      case 1:
-        bookTicket(flights, numFlights, passengers, numPassengers);
-        break;
-      case 2:
-        cancelTicket(flights, numFlights, passengers, numPassengers);
-        break;
-      case 3:
-        modifyPassengerInfo(passengers, numPassengers);
-        break;
-      case 4:
-        return;
-      default:
-        printf("Invalid choice. Please try again.\n");
+    
+        switch (choice) {
+            case 1:
+                printf("Enter flight number to add seat to: ");
+                scanf("%d", &flightNumber);
+                addSeat(flights, numFlights, flightNumber);
+                break;
+            case 2:
+                printf("Enter flight number to delete seat from: ");
+                scanf("%d", &flightNumber);
+                deleteSeat(flights, numFlights, flightNumber);
+                break;
+            case 3:
+                printf("Enter flight number to modify seat information: ");
+                scanf("%d", &flightNumber);
+                modifySeatInfo(flights, numFlights, flightNumber);
+                break;
+            case 4:
+                return;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
     }
-  }
 }
 
+
+void addSeat(Flight *flights, int numFlights, int flightNumber) {
+    for (int i = 0; i < numFlights; i++) {
+        if (flights[i].flightNumber == flightNumber) {
+            if (flights[i].numSeats < MAX_SEATS_PER_FLIGHT) {
+                 int newSeatNumber = flights[i].numSeats + 1;
+                flights[i].seats[flights[i].numSeats].seatNumber = newSeatNumber;
+                flights[i].seats[flights[i].numSeats].isOccupied = 0; 
+                flights[i].seats[flights[i].numSeats].passengerID = -1; 
+                flights[i].numSeats++;
+                printf("Seat added successfully to Flight %d.\n", flightNumber);
+                return;
+            } else {
+                printf("Cannot add more seats to Flight %d. Maximum seats reached.\n", flightNumber);
+                return;
+            }
+        }
+    }
+    printf("Flight %d not found.\n", flightNumber);
+}
+
+
+void deleteSeat(Flight *flights, int numFlights, int flightNumber) {
+    for (int i = 0; i < numFlights; i++) {
+        if (flights[i].flightNumber == flightNumber) {
+            if (flights[i].numSeats > 0) {
+                // Decrement numSeats to delete the last seat
+                flights[i].numSeats--;
+                printf("Seat deleted successfully from Flight %d.\n", flightNumber);
+                return;
+            } else {
+                printf("No seats available to delete in Flight %d.\n", flightNumber);
+                return;
+            }
+        }
+    }
+    printf("Flight %d not found.\n", flightNumber);
+}
+
+/
+void modifySeatInfo(Flight *flights, int numFlights, int flightNumber) {
+    for (int i = 0; i < numFlights; i++) {
+        if (flights[i].flightNumber == flightNumber) {
+            int seatNumber;
+            printf("Enter seat number to modify: ");
+            scanf("%d", &seatNumber);
+
+            if (seatNumber >= 1 && seatNumber <= flights[i].numSeats) {
+                 printf("Seat information modified successfully.\n");
+                return;
+            } else {
+                printf("Invalid seat number.\n");
+                return;
+            }
+        }
+    }
+    printf("Flight %d not found.\n", flightNumber);
+}
+
+
+int main() {
+    Flight flights[MAX_FLIGHTS] = {
+        {101, "New York"},
+        {102, "London"},   
+        };
+    int numFlights = 2; 
+ manageSeats(flights, numFlights);
+return 0;
+}
 
 
 
@@ -246,55 +334,9 @@ int main() {
         
     };
     int numFlights = sizeof(flights) / sizeof(Flight);
-
     Passenger passengers[100]; 
     int numPassengers = 0;
-
     managePassengers(flights, numFlights, passengers, &numPassengers);
-
     return 0;
 }
 
-int main() {
-    flights = NULL;
-    numFlights = 0;
-    passengers = NULL;
-    numPassengers = 0;
-
-    int choice;
-    do {
-        printf("\nFlight Management System\n");
-        printf("1. Add Flight\n");
-        printf("2. Delete Flight\n");
-        printf("3. Modify Flight\n");
-        printf("4. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
-
-        switch (choice) {
-            case 1:
-                addFlight(&flights, &numFlights);
-                break;
-            case 2:
-                deleteFlight(&flights, &numFlights);
-                break;
-            case 3:
-                modifyFlight(&flights, numFlights);
-                break;
-            case 4:
-                printf("Exiting...\n");
-                break;
-            default:
-                printf("Invalid choice. Please try again.\n");
-        }
-    } while (choice != 4);
-
-    
-    for (int i = 0; i < numFlights; i++) {
-        free(flights[i].seats);
-    }
-    free(flights);
-    free(passengers);
-
-    return 0;
-}
