@@ -152,6 +152,108 @@ void createSeat(Flight *flight) {
     }
 }
 
+void managePassengers(Flight *flights, int numFlights, Passenger *passengers, int *numPassengers) {
+  while (1) {
+    int choice;
+
+    printf("\nPassenger Management\n");
+    printf("1. Book Ticket\n");
+    printf("2. Cancel Ticket\n");
+    printf("3. Modify Passenger Information\n");
+    printf("4. Back to Main Menu\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+      case 1:
+        bookTicket(flights, numFlights, passengers, numPassengers);
+        break;
+      case 2:
+        cancelTicket(flights, numFlights, passengers, numPassengers);
+        break;
+      case 3:
+        modifyPassengerInfo(passengers, numPassengers);
+        break;
+      case 4:
+        return;
+      default:
+        printf("Invalid choice. Please try again.\n");
+    }
+  }
+}
+
+
+
+
+
+
+
+
+void managePassengers(Flight *flights, int numFlights, Passenger *passengers, int *numPassengers) {
+    while (1) {
+        int choice;
+
+        printf("\nPassenger Management\n");
+        printf("1. Book Ticket\n");
+        printf("2. Cancel Ticket\n");
+        printf("3. Modify Passenger Information\n");
+        printf("4. Back to Main Menu\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                bookTicket(flights, numFlights, passengers, numPassengers);
+                break;
+            case 2:
+                cancelTicket(flights, numFlights, passengers, numPassengers);
+                break;
+            case 3:
+                modifyPassengerInfo(passengers, numPassengers);
+                break;
+            case 4:
+                return;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
+}
+
+
+void bookTicket(Flight *flights, int numFlights, Passenger *passengers, int *numPassengers) {
+    printf("Functionality to book a ticket will be implemented here.\n");
+   
+}
+
+
+void cancelTicket(Flight *flights, int numFlights, Passenger *passengers, int *numPassengers) {
+    printf("Functionality to cancel a ticket will be implemented here.\n");
+   
+}
+
+
+void modifyPassengerInfo(Passenger *passengers, int *numPassengers) {
+    printf("Functionality to modify passenger information will be implemented here.\n");
+    
+}
+
+
+int main() {
+    
+    Flight flights[] = {
+        {101, "New York"},
+        {102, "London"},
+        
+    };
+    int numFlights = sizeof(flights) / sizeof(Flight);
+
+    Passenger passengers[100]; 
+    int numPassengers = 0;
+
+    managePassengers(flights, numFlights, passengers, &numPassengers);
+
+    return 0;
+}
 
 int main() {
     flights = NULL;
