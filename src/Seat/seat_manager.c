@@ -1,3 +1,6 @@
+#include "seat.h"
+#include <stdio.h>
+#include <string.h>
 void manageFlights() {
     while (1) {
         int choice;
