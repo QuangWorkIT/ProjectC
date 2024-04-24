@@ -154,17 +154,7 @@ void createSeat(Flight *flight) {
         strcpy(flight->seats[i].Passengername, ""); 
     }
 }
-int main() {
-    flights = (Flight *)malloc(MAX_FLIGHTS * sizeof(Flight));
-    if (flights == NULL) {
-        printf("Memory allocation failed for flights.\n");
-        return 1;
-    }
-    numFlights = 0;
-    manageFlights();
-    free(flights);
-    return 0;
-}
+
 
 
 void manageSeats() {
@@ -264,15 +254,7 @@ void modifySeatInfo(Flight *flights, int numFlights, int flightNumber) {
 }
 
 
-int main() {
-    Flight flights[MAX_FLIGHTS] = {
-        {101, "New York"},
-        {102, "London"},   
-        };
-    int numFlights = 2; 
- manageSeats(flights, numFlights);
-return 0;
-}
+
 
 
 
@@ -329,17 +311,5 @@ void modifyPassengerInfo(Passenger *passengers, int *numPassengers) {
 }
 
 
-int main() {
-    
-    Flight flights[] = {
-        {101, "New York"},
-        {102, "London"},
-        
-    };
-    int numFlights = sizeof(flights) / sizeof(Flight);
-    Passenger passengers[100]; 
-    int numPassengers = 0;
-    managePassengers(flights, numFlights, passengers, &numPassengers);
-    return 0;
-}
+
 
