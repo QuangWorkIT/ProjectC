@@ -4,7 +4,6 @@
 #include <stdlib.h>
 // void function to create a new ticket
 void create_ticket(Ticket tickets[], int *current_id, enum Display *dis){
-    printf("hello world");
     printf("Enter ticket ID: ");
     scanf("%s", &tickets[*current_id].ticket_id);
     printf("Enter buyer info: ");

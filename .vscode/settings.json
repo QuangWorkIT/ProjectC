@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "ticket.h": "c"
+        "ticket.h": "c",
+        "stdio.h": "c"
     }
 }

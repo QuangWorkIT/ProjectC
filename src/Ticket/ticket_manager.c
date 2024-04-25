@@ -39,7 +39,7 @@ void remove_ticket(Ticket tickets[], int *current_id) {
             }
         }
         if(flag == 0) printf("No search for ticket ID!");
-        else printf("The %s has been removed from list\n", ticket_id);
+        else printf("The %s ticket has been removed from list\n", ticket_id);
         (*current_id)--;
 }
 void showAll(Ticket tickets[], int *current_id) {
