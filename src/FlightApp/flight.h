@@ -56,6 +56,7 @@ typedef struct
 
 void create_ticket(Ticket tickets[], int *current_id, enum Display *dis);
 void remove_ticket(Ticket tickets[], int *current_id, enum Display *dis);
+void remove_data_file(int j);
 void save_data(Ticket tickets[], int *current_id);
 void showAll_Ticket(Ticket tickets[], int *current_id, enum Display *dis);
 void import_Ticket_Database(Ticket tickets[], int *current_id,enum Display *dis);

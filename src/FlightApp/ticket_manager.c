@@ -6,8 +6,10 @@
 void create_ticket(Ticket tickets[], int *current_id, enum Display *dis){
     printf("Enter ticket ID: ");
     scanf("%s", &tickets[*current_id].ticket_id);
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
     printf("Enter buyer info: ");
-    scanf("%s", &tickets[*current_id].buyer_info);
+    scanf("%[^\n]", &tickets[*current_id].buyer_info);
     printf("Enter booking time: ");
     scanf("%s", &tickets[*current_id].booking_time);
     printf("Enter price: ");
@@ -44,7 +46,9 @@ void remove_ticket(Ticket tickets[], int *current_id, enum Display *dis) {
                 if(strcmp(tickets[i].ticket_id, ticket_id) == 0)
                     flag = 1, j = i;
             
+            
             if(j != -1) {
+                remove_data_file(j+1);
                 for (j ; j < *current_id; j++)
                 {
                     strcpy(tickets[j].booking_time, tickets[j+1].booking_time);
@@ -59,7 +63,7 @@ void remove_ticket(Ticket tickets[], int *current_id, enum Display *dis) {
             if(flag == 0) printf("No search for ticket ID!\n");
             else printf("The %s has been removed from list\n", ticket_id),(*current_id)--;
         }
-
+        
         char back2[1] = "";
         while (1)
         {
@@ -69,9 +73,35 @@ void remove_ticket(Ticket tickets[], int *current_id, enum Display *dis) {
                 break;
         }
 }
+void remove_data_file(int j){
+    FILE *fptrRemoveData = fopen("ticket_database.txt", "r");
+    if(fptrRemoveData == NULL) {
+        printf("Error opening file\n"); 
+        return;
+    }
+    FILE *fptrTmp = fopen("ticekettmpfile.txt", "w");
+    if(fptrTmp == NULL){
+        printf("Error opening file\n"); 
+        return;   
+    }
+
+    char StringTmp[100];
+    int countLine = 0;
+    while (fgets(StringTmp, 100, fptrRemoveData) != NULL)
+    {
+        countLine++;
+        if(countLine != j)
+            fputs(StringTmp, fptrTmp);
+    }
+    fclose(fptrRemoveData);
+    fclose(fptrTmp);
+    remove("ticket_database.txt");
+    rename("ticekettmpfile.txt", "ticket_database.txt");
+
+}
 // void function check whether the list is empty?
 void show_ticket_list(Ticket tickets[], int *current_id, int *check){
-    if(*current_id == 0) printf("Require to import tickets list"), *check = 0;
+    if(*current_id == 0) printf("Require to import tickets list\n"), *check = 0;
     else{
         *check = 1;
         printf("|-----------------------------------------------------------------------|\n");
@@ -90,10 +120,10 @@ void show_ticket_list(Ticket tickets[], int *current_id, int *check){
 // void function to import data from database
 void import_Ticket_Database(Ticket tickets[], int *current_id,enum Display *dis){
         FILE *fptrEmptyList;
-            fptrEmptyList = fopen("D:/Project/src/FlightApp/ticket_database.txt","r");
-            char fstring[100] ="";
-            char code[100] ="";
-            int j = 0;
+        fptrEmptyList = fopen("D:/Project/src/FlightApp/ticket_database.txt","r");
+        char fstring[100] ="";
+        char code[100] ="";
+        int j = 0;
             while (fgets(fstring, 100, fptrEmptyList))
             { 
                 int count = 0;
@@ -173,7 +203,7 @@ void showAll_Ticket(Ticket tickets[], int *current_id, enum Display *dis) {
 void save_data(Ticket tickets[], int *current_id){
     FILE *fptr;
     char string[100]="";
-    fptr = fopen("D:/Project/src/FlightApp/ticket_database.txt", "a");
+    fptr = fopen("D:/Project/src/FlightApp/ticket_database.txt", "w");
     for (int i = 0; i < *current_id; i++)
     {
         // strcpy(string, tickets[i].ticket_id);
