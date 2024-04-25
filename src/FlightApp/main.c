@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 int main(){
-    
+    printf("hello world");
     int choice = 0;
     enum Display dis = HOME;
     Flight flights[100];
