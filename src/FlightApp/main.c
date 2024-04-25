@@ -9,9 +9,11 @@ int main(){
     Flight flights[100];
     Ticket tickets[100];
     Customer customers[100];
+    Seat seats[100];
     int current_flight_id = 0; 
     int current_ticket_id = 0; 
     int current_customer_id = 0;
+    int current_seat_id = 0;
 
     while (dis == HOME)
     {
@@ -60,18 +62,18 @@ int main(){
                         case 1:
                             system("cls");
                             printf("Create a ticket\n");
-                            create_ticket(tickets, &current_ticket_id, &dis);
-                            save_data(tickets, &current_ticket_id );
+                            create_ticket(tickets, &current_ticket_id);
+                            save_ticket_data(tickets, &current_ticket_id );
                             break;
                         case 2:
                             system("cls");
                             printf("Remove a ticket\n");
-                            remove_ticket(tickets, &current_ticket_id, &dis);
+                            remove_ticket(tickets, &current_ticket_id);
                             break;
                         case 3:
                             system("cls");
                             printf("List of tickets\n");
-                            showAll_Ticket(tickets, &current_ticket_id, &dis);  
+                            showAll_Ticket(tickets, &current_ticket_id);  
                             break;
                         case 4 : dis = HOME; break;
                         default:
@@ -130,19 +132,19 @@ int main(){
                     {
                         case 1:
                             printf("Create a seat\n");
-                            // createSeat(NULL);
+                            createSeat(seats, &current_seat_id);
                             break;
                         case 2:
                             printf("Remove a seat\n");
-                            // deleteSeat(NULL);
+                            remove_seat(seats, &current_seat_id);
                             break;
                         case 3:
-                            printf("Add seat\n");
-                            // addSeat(NULL);
+                            printf("Show all seats in list\n");
+                            showAll_seats(seats, &current_seat_id);
                             break;
                         case 4:
                             printf("Modify seat\n");
-                            // modifySeat(NULL);
+                            modifySeat(seats, &current_seat_id);
                             break;
                         case 5: dis = HOME ; break;
                         default:

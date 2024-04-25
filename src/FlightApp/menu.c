@@ -53,8 +53,8 @@ void menu(enum Display dis){
             printf("|--------------------|\n");
             printf("|    *Seat Manager*  |\n");
             printf("|   1.Create seat    |\n");
-            printf("|   2.Add seat       |\n");
-            printf("|   3.Remove seat    |\n");
+            printf("|   2.Delete seat    |\n");
+            printf("|   3.List of seat   |\n");
             printf("|   4.Modify seat    |\n");
             printf("|   5.Back to Home   |\n");
             printf("|--------------------|\n");

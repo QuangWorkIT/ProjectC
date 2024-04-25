@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 // void function to create a new ticket
-void create_ticket(Ticket tickets[], int *current_id, enum Display *dis){
+void create_ticket(Ticket tickets[], int *current_id){
     printf("Enter ticket ID: ");
     scanf("%s", &tickets[*current_id].ticket_id);
     int c;
@@ -16,8 +16,9 @@ void create_ticket(Ticket tickets[], int *current_id, enum Display *dis){
     scanf("%f", &tickets[*current_id].price);
     printf("Enter class: ");
     scanf("%s", &tickets[*current_id].classification);
+    while ((c = getchar()) != '\n' && c != EOF);
     printf("Enter flight number: ");
-    scanf("%s", &tickets[*current_id].flight_number);
+    scanf("%[^\n]", &tickets[*current_id].flight_number);
     printf("Enter seat number: ");  
     scanf("%s", &tickets[*current_id].seat_number);
     (*current_id)++;
@@ -33,7 +34,7 @@ void create_ticket(Ticket tickets[], int *current_id, enum Display *dis){
 }
 
 // void function of removing a ticket
-void remove_ticket(Ticket tickets[], int *current_id, enum Display *dis) {
+void remove_ticket(Ticket tickets[], int *current_id) {
         int check = 0;
         show_ticket_list(tickets, current_id, &check);
         if(check == 1){
@@ -118,7 +119,7 @@ void show_ticket_list(Ticket tickets[], int *current_id, int *check){
     }
 }
 // void function to import data from database
-void import_Ticket_Database(Ticket tickets[], int *current_id,enum Display *dis){
+void import_Ticket_Database(Ticket tickets[], int *current_id){
         FILE *fptrEmptyList;
         fptrEmptyList = fopen("D:/Project/src/FlightApp/ticket_database.txt","r");
         char fstring[100] ="";
@@ -170,12 +171,12 @@ void import_Ticket_Database(Ticket tickets[], int *current_id,enum Display *dis)
                 (*current_id) = j;  
             }
         fclose(fptrEmptyList);
-    showAll_Ticket(tickets, current_id, dis);
+    showAll_Ticket(tickets, current_id);
 }
 // void funtion to show all tickets are remaining in list
-void showAll_Ticket(Ticket tickets[], int *current_id, enum Display *dis) {
+void showAll_Ticket(Ticket tickets[], int *current_id) {
     if(*current_id == 0)
-        import_Ticket_Database(tickets, current_id, dis);
+        import_Ticket_Database(tickets, current_id);
     else{
         printf("|-----------------------------------------------------------------------|\n");
         printf("|   ID   |       Customer     | Time |  Price  | Type |  Flight  | Seat |\n");
@@ -200,7 +201,7 @@ void showAll_Ticket(Ticket tickets[], int *current_id, enum Display *dis) {
 }
 
 // void function to storage ticket information into a file
-void save_data(Ticket tickets[], int *current_id){
+void save_ticket_data(Ticket tickets[], int *current_id){
     FILE *fptr;
     char string[100]="";
     fptr = fopen("D:/Project/src/FlightApp/ticket_database.txt", "w");

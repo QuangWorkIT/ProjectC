@@ -54,13 +54,14 @@ typedef struct
     char ticket_id[MAX_PASSENGER_INFO];
 } Ticket;
 
-void create_ticket(Ticket tickets[], int *current_id, enum Display *dis);
-void remove_ticket(Ticket tickets[], int *current_id, enum Display *dis);
+void create_ticket(Ticket tickets[], int *current_id);
+void remove_ticket(Ticket tickets[], int *current_id);
 void remove_data_file(int j);
-void save_data(Ticket tickets[], int *current_id);
-void showAll_Ticket(Ticket tickets[], int *current_id, enum Display *dis);
-void import_Ticket_Database(Ticket tickets[], int *current_id,enum Display *dis);
+void save_ticket_data(Ticket tickets[], int *current_id);
+void showAll_Ticket(Ticket tickets[], int *current_id);
+void import_Ticket_Database(Ticket tickets[], int *current_id);
 void show_ticket_list(Ticket tickets[], int *current_id, int *check);
+
 //// struct of customer
 typedef struct 
 {
@@ -79,12 +80,14 @@ void showAll_Customer(Customer customerList[], int *current_Id);
 
 //// struct of seat 
 typedef struct Seat {
-    int Seatnumber;
-    char Passengername[MAX_PASSENGER_INFO];
+    char seatNumber[10];
+    char status[20];
 } Seat;
-
-void createSeat(Flight *flight);
-void addSeat(Flight *flight);
-void deleteSeat(Flight *flight);
-void modifySeat(Flight *flight);
-#endif 
+void createSeat(Seat seats[], int *numSeats);
+void modifySeat(Seat seats[], int *current_id);
+void remove_seat(Seat seats[], int *current_id);
+void save_seat_data(Seat seats[], int *current_id);
+void showAvailableSeat(Seat seats[], int *current_id, int *check);
+void import_seat_Database(Seat seats[], int *current_id);
+void showAll_seats(Seat seats[], int *current_id);
+#endif
