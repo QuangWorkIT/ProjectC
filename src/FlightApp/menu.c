@@ -40,12 +40,9 @@ void menu(enum Display dis){
             printf("|-------------------------|\n");
             printf("|  *Customer Manager*     |\n");
             printf("|   1.Create Customer     |\n");
-            printf("|   2.Set customer ID     |\n");
-            printf("|   3.Set name            |\n");
-            printf("|   4.Set phone number    |\n");
-            printf("|   5.Set email           |\n");
-            printf("|   6.Show all customers  |\n");
-            printf("|   7.Back to Home        |\n");
+            printf("|   2.Set information     |\n");
+            printf("|   3.List of customers   |\n");
+            printf("|   4.Back to Home        |\n");
             printf("|-------------------------|\n");
             break;
         case SEAT:

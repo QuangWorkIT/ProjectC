@@ -96,26 +96,14 @@ int main(){
                             create_Customer(customers, &current_customer_id);
                             break;
                         case 2:
-                            printf("Set customer's ID\n");
-                            set_ID(customers, &current_customer_id);
+                            printf("Set customer's information\n");
+                            set_passengerInfo(customers, &current_customer_id);
                             break;
                         case 3:
-                            printf("Set customer's name\n");
-                            set_Name(customers, &current_customer_id);
-                            break;
-                        case 4 :
-                            printf("Set customer's phone number\n");
-                            set_Phone_Number(customers, &current_customer_id);
-                            break;
-                        case 5:
-                            printf("Set customer's email\n");
-                            set_Email(customers, &current_customer_id);
-                            break;
-                        case 6:
                             printf("Show list of customers\n");
                             showAll_Customer(customers, &current_customer_id);
                             break;
-                        case 7: dis =HOME;break;
+                        case 4: dis =HOME;break;
                         default:
                             printf("Wrong choice!\n");
                     }

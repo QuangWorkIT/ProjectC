@@ -72,10 +72,7 @@ typedef struct
 } Customer;
 
 void create_Customer(Customer customerList[], int *current_Id);
-void set_ID(Customer customerList[], int *current_Id);
-void set_Name(Customer customerList[], int *current_Id);
-void set_Phone_Number(Customer customerList[], int *current_Id);
-void set_Email(Customer customerList[], int *current_Id);
+void set_passengerInfo(Customer customerList[], int *current_Id);
 void showAll_Customer(Customer customerList[], int *current_Id);
 
 //// struct of seat 
