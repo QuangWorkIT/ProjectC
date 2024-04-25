@@ -1,1 +1,0 @@
-showAll_Ticket(tickets, current_id, dis);
