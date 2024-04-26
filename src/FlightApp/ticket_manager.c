@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 // void function to create a new ticket
 void create_ticket(Ticket tickets[], int *current_id){
     printf("Enter ticket ID: ");

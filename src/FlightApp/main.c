@@ -28,7 +28,7 @@ int main(){
                 do
                 {
                     menu(dis);
-                    printf("Enter an option from the flight screen: ");
+                    printf("Enter an option on the flight screen: ");
                     scanf("%d", &option);
                     switch (option)
                     {
@@ -59,7 +59,7 @@ int main(){
                 do
                 {
                     menu(dis);
-                    printf("Enter an option from the ticket screen: ");
+                    printf("Enter an option on the ticket screen: ");
                     scanf("%d", &option);
                     switch (option)
                     {
@@ -91,7 +91,7 @@ int main(){
                 do
                 {
                     menu(dis);
-                    printf("Enter an option from the customer screen: ");
+                    printf("Enter an option on the customer screen: ");
                     scanf("%d", &option);
                     switch (option)
                     {
@@ -100,12 +100,12 @@ int main(){
                             create_Customer(customers, &current_customer_id);
                             break;
                         case 2:
-                            printf("Set customer's information\n");
+                            printf("Set passenger's information\n");
                             set_passengerInfo(customers, &current_customer_id);
                             break;
                         case 3:
-                            printf("Show list of customers\n");
-                            showAllpassengerfromDatabase(customers, &current_customer_id,-1);
+                            printf("Show list of passengers\n");
+                            showAllpassengerfromDatabase(customers, &current_customer_id, -1);
                             break;
                         case 4: dis = HOME;break;
                         default:
@@ -118,24 +118,28 @@ int main(){
                 do
                 {
                     menu(dis);
-                    printf("Enter an option from the seat screen: ");
+                    printf("Enter an option on the seat screen: ");
                     scanf("%d", &option);
                     switch (option)
                     {
                         case 1:
+                            system("cls");
                             printf("Create a seat\n");
                             createSeat(seats, &current_seat_id);
                             break;
                         case 2:
+                            system("cls");
                             printf("Remove a seat\n");
                             remove_seat(seats, &current_seat_id);
                             break;
                         case 3:
+                            system("cls");
                             printf("Show all seats in list\n");
                             showAll_seats(seats, &current_seat_id);
                             break;
                         case 4:
-                            printf("Modify seat\n");
+                            system("cls");
+                            printf("Modify seat's property\n");
                             modifySeat(seats, &current_seat_id);
                             break;
                         case 5: dis = HOME ; break;

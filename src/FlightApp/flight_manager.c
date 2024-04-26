@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 // create a flight
 void Flight_create(Flight flight[], int *current_id)
 {
@@ -34,9 +35,9 @@ void Flight_create(Flight flight[], int *current_id)
     fprintf(file, "Airline: %s\n", flight[*current_id].airline);
     fprintf(file, "Flight time: %s\n", flight[*current_id].flight_time);
     fprintf(file, "Status: %s\n", flight[*current_id].status);
-
     fclose(file);
     (*current_id)++;
+
     printf("Create flight successfully!\n");
     char back[1] = "";
         while (1)
@@ -47,6 +48,7 @@ void Flight_create(Flight flight[], int *current_id)
                 break; 
         }
 }
+
 // remove a flight
 void Flight_remove(Flight flight[], int *current_id)
 {

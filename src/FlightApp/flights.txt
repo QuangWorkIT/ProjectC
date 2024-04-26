@@ -1,7 +1,8 @@
-Destination: Nha Trang
-Departure: HCM
-Takeoff time: 2am
-Landing time: 14pm
-Airline: bambo airline
-Flight time: 12
-Status: ontip
+Destination: HA Noi
+Departure: Da
+Takeoff time: 5AM
+Landing time: 10am
+Airline: bamboo
+Flight time: 3
+Status: on trip
+

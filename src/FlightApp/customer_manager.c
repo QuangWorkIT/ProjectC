@@ -27,7 +27,7 @@ void create_Customer(Customer customerList[], int *current_Id){
     }
 }
 void set_passengerInfo(Customer customerList[], int *current_Id){
-    showAllpassengerfromDatabase(customerList, current_Id,-1);
+    showAll_Customer(customerList, current_Id);
     printf("Enter customer ID: ");
     char Id[100]; 
     scanf("%s", &Id);
@@ -73,7 +73,7 @@ void set_passengerInfo(Customer customerList[], int *current_Id){
             }
         }
     }
-    printf("%s", flag == 0? "Information modified successfully!\n" : "No such for customer ID!\n");
+    printf("%s", flag == 0? "Information modified successfully!\n" : "No such for passenger ID!\n");
     char s2[1] = ""; 
     while (1) {
         printf("Press B to back home  ");
@@ -84,7 +84,7 @@ void set_passengerInfo(Customer customerList[], int *current_Id){
 }
 
 void showAll_Customer(Customer customerList[], int *current_Id){
-    printf("List of customer\n");
+    printf("List of passenger\n");
     for (int i = 0; i < *current_Id; i++)
     {   
         printf("|------------------------------------------------------------------|\n");
@@ -177,10 +177,10 @@ void showAllpassengerfromDatabase(Customer customerList[], int *current_id, int 
     else if(check == 0) printf("No data in database");
     else{
     {   
+        printf("|------------------------------------------------------------------|\n");
+        printf("|     ID   |    Passenger Name   |   Phone  |         Email        |\n");
         for (int i = 0; i < *current_id; i++)
         {   
-            printf("|------------------------------------------------------------------|\n");
-            printf("|     ID   |    Passenger Name   |   Phone  |         Email        |\n");
             printf("|------------------------------------------------------------------|\n");
             printf("|%-10s|%-20s |%-10s|%-22s|\n", customerList[i].passport_number,
             customerList[i].passenger_name, customerList[i].phone, customerList[i].email);

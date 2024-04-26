@@ -91,14 +91,14 @@ void showAvailableSeat(Seat seats[], int *current_id, int *check){
     if(*current_id == 0) printf("Require to import seats list\n"), *check = 0;
     else{
         *check = 1;
-        printf("|--------------------|\n");
-        printf("| Number |   Status  |\n");
-        printf("|--------------------|\n");
+        printf("|---------------------|\n");
+        printf("| Number |    Status  |\n");
+        printf("|---------------------|\n");
             for (int i = 0; i < *current_id; i++)
             {
-                printf("| %-6s | %-9s |\n", seats[i].seatNumber, seats[i].status);
+                printf("| %-6s | %-10s |\n", seats[i].seatNumber, seats[i].status);
             }
-        printf("|--------------------|\n");
+        printf("|---------------------|\n");
     }
 }
 //// import from seat database
@@ -147,14 +147,14 @@ void showAll_seats(Seat seats[], int *current_id) {
     if(*current_id == 0)
         import_seat_Database(seats, current_id);
     else{
-        printf("|--------------------|\n");
-        printf("| Number |   Status  |\n");
-        printf("|--------------------|\n");
+        printf("|---------------------|\n");
+        printf("| Number |    Status  |\n");
+        printf("|---------------------|\n");
             for (int i = 0; i < *current_id; i++)
             {
-                printf("| %-6s | %-9s |\n", seats[i].seatNumber, seats[i].status);
+                printf("| %-6s | %-10s |\n", seats[i].seatNumber, seats[i].status);
             }
-        printf("|--------------------|\n");
+        printf("|---------------------|\n");
     }
     char s3[3] = "";
     while (1) {
