@@ -1,7 +1,7 @@
-Destination: cscsa
-Departure: cscs
-Takeoff time: ccsa
-Landing time: csa
-Airline: cs
-Flight time: cs
-Status: cs
+Destination: Nha Trang
+Departure: HCM
+Takeoff time: 2am
+Landing time: 14pm
+Airline: bambo airline
+Flight time: 12
+Status: ontip

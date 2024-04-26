@@ -21,8 +21,9 @@ void menu(enum Display dis){
             printf("|  *Flight Manager*  |\n");
             printf("|   1.Create flight  |\n");
             printf("|   2.Remove flight  |\n");
-            printf("| 3.List all flights |\n");
-            printf("|   4.Back to Home   |\n");
+            printf("|   3.Edit flight    |\n");
+            printf("|   4.List flights   |\n"); 
+            printf("|   5.Back to Home   |\n");
             printf("|--------------------|\n");
             break;
         case TICKET:

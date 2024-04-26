@@ -40,7 +40,7 @@ typedef struct
 void Flight_create(Flight flight[], int *current_id);
 void Flight_remove(Flight flight[], int *current_id);
 void Flight_list(Flight flight[], int *current_id);
-
+void Flight_edit(Flight flight[], int *current_id);
 
 //// struct of ticket information 
 typedef struct 

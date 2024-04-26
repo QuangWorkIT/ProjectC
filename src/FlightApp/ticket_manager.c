@@ -204,7 +204,7 @@ void showAll_Ticket(Ticket tickets[], int *current_id) {
 void save_ticket_data(Ticket tickets[], int *current_id){
     FILE *fptr;
     char string[100]="";
-    fptr = fopen("D:/Project/src/FlightApp/ticket_database.txt", "w");
+    fptr = fopen("ticket_database.txt", "w");
     for (int i = 0; i < *current_id; i++)
     {
         // strcpy(string, tickets[i].ticket_id);

@@ -41,10 +41,14 @@ int main(){
                             Flight_remove(flights, &current_flight_id);
                             break;
                         case 3:
+                            printf("Modify flight's properties\n");
+                            Flight_edit(flights, &current_flight_id);
+                            break;
+                        case 4:
                             printf("List of flights\n");
                             Flight_list(flights, &current_flight_id);
                             break;
-                        case 4: dis = HOME ; break;
+                        case 5: dis = HOME ; break;
                         default:
                         printf("Wrong choice!\n");
                     }
