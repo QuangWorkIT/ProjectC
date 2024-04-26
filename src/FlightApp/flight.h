@@ -74,6 +74,9 @@ typedef struct
 void create_Customer(Customer customerList[], int *current_Id);
 void set_passengerInfo(Customer customerList[], int *current_Id);
 void showAll_Customer(Customer customerList[], int *current_Id);
+void save_passenger_data(Customer customers[], int *current_id);
+void import_passenger_Database(Customer customerList[], int *current_id, int check);
+void showAllpassengerfromDatabase(Customer customerList[], int *current_id, int check);
 
 //// struct of seat 
 typedef struct Seat {

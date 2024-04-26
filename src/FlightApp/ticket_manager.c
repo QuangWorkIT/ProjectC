@@ -121,7 +121,7 @@ void show_ticket_list(Ticket tickets[], int *current_id, int *check){
 // void function to import data from database
 void import_Ticket_Database(Ticket tickets[], int *current_id){
         FILE *fptrEmptyList;
-        fptrEmptyList = fopen("D:/Project/src/FlightApp/ticket_database.txt","r");
+        fptrEmptyList = fopen("ticket_database.txt","r");
         char fstring[100] ="";
         char code[100] ="";
         int j = 0;

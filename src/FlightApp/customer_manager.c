@@ -17,6 +17,7 @@ void create_Customer(Customer customerList[], int *current_Id){
     scanf("%s", &customerList[*current_Id].email);
     (*current_Id)++;
     printf("Add new passenger successfully!\n");
+    save_passenger_data(customerList, current_Id);
     char s[3] = "";
     while (1) {
         printf("Press B to back home  ");
@@ -26,7 +27,7 @@ void create_Customer(Customer customerList[], int *current_Id){
     }
 }
 void set_passengerInfo(Customer customerList[], int *current_Id){
-    showAll_Customer(customerList, current_Id);
+    showAllpassengerfromDatabase(customerList, current_Id,-1);
     printf("Enter customer ID: ");
     char Id[100]; 
     scanf("%s", &Id);
@@ -93,11 +94,106 @@ void showAll_Customer(Customer customerList[], int *current_Id){
         customerList[i].passenger_name, customerList[i].phone, customerList[i].email);
         printf("|------------------------------------------------------------------|\n");
     } 
-    char s3[1] ="";
-    while (1) {
-        printf("Press B to back home  ");
-        scanf("%s", &s3);
-        if (strcmp(s3,"B") == 0)
-            break;
+}
+void save_passenger_data(Customer customers[], int *current_id){
+    FILE *fptr;
+    char string[100]="";
+    fptr = fopen("passenger_database.txt", "w");
+    for (int i = 0; i < *current_id; i++)
+    {
+        fprintf(fptr, customers[i].passport_number);
+        fprintf(fptr, "/");
+        memset(string, 0, sizeof(string));
+
+
+        fprintf(fptr,customers[i].passenger_name);
+        fprintf(fptr, "/");
+        memset(string, 0, sizeof(string));
+
+
+        fprintf(fptr,customers[i].phone);
+        fprintf(fptr, "/");
+        memset(string, 0, sizeof(string));
+
+        fprintf(fptr,customers[i].email);
+        fprintf(fptr, "/");
+        memset(string, 0, sizeof(string));
+        fprintf(fptr, "\n");
+    }
+    fclose(fptr);
+}
+void import_passenger_Database(Customer customerList[], int *current_id, int check){
+        FILE *fptrEmptyList;
+        fptrEmptyList = fopen("passenger_database.txt","r");
+        char fstring[100] ="";
+        char code[100] ="";
+        int j = 0;
+        int count;
+            while (fgets(fstring, 100, fptrEmptyList))
+            { 
+                count = 0;
+                for (int i = 0; i < strlen(fstring); i++)
+                    if(fstring[i] == '/')
+                        count++;
+                    
+                if(count == 0) check = count;    
+                int k = 0;
+                for(int i=0; i< strlen(fstring); i++){
+                    if(fstring[i] != '/')
+                    {
+                        code[k++] = fstring[i];	
+                    }else
+                    {
+                        switch (count)
+                        {
+                        case 1:
+                            strcpy(customerList[j].email, code);
+                            break;
+                        case 2:
+                            strcpy(customerList[j].phone, code);
+                            break;
+                        case 3:
+                            strcpy(customerList[j].passenger_name, code);
+                            break;
+                        case 4:
+                            strcpy(customerList[j].passport_number, code);
+                            break;
+                        }
+                        count--;
+                        k = 0;
+                        memset(code, 0, sizeof(code));
+                    }   
+                } 
+                j++;
+                (*current_id) = j;  
+            }
+        fclose(fptrEmptyList);
+    showAllpassengerfromDatabase(customerList, current_id, check);
+
+}
+void showAllpassengerfromDatabase(Customer customerList[], int *current_id, int check){
+    if(*current_id == 0)
+        import_passenger_Database(customerList, current_id,check);
+    else if(check == 0) printf("No data in database");
+    else{
+    {   
+        for (int i = 0; i < *current_id; i++)
+        {   
+            printf("|------------------------------------------------------------------|\n");
+            printf("|     ID   |    Passenger Name   |   Phone  |         Email        |\n");
+            printf("|------------------------------------------------------------------|\n");
+            printf("|%-10s|%-20s |%-10s|%-22s|\n", customerList[i].passport_number,
+            customerList[i].passenger_name, customerList[i].phone, customerList[i].email);
+            printf("|------------------------------------------------------------------|\n");
+        } 
+    } 
+    char back[1] = "";
+        while (1)
+        {
+            printf("Press B to come back home: ");
+            scanf("%s", &back);
+            if( strcmp(back,"B")  == 0)
+                break; 
+        }
     }
 }

@@ -101,9 +101,9 @@ int main(){
                             break;
                         case 3:
                             printf("Show list of customers\n");
-                            showAll_Customer(customers, &current_customer_id);
+                            showAllpassengerfromDatabase(customers, &current_customer_id,-1);
                             break;
-                        case 4: dis =HOME;break;
+                        case 4: dis = HOME;break;
                         default:
                             printf("Wrong choice!\n");
                     }
