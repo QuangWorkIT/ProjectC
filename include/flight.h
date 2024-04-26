@@ -16,6 +16,10 @@
 #define MAX_PASSENGER_INFO 100
 #define MAX_EMAIL 50
 
+#define USERNAME_PREFIX "username: "
+#define MAX_USERNAME_LENGTH 100
+#define MAX_PASSWORD_LENGTH 100
+#define MAX_LINE_LENGTH 256
 enum Display{
     HOME ,
     FLIGHT ,
@@ -26,6 +30,15 @@ enum Display{
 };
 void menu(enum Display dis);
 //// struct of flight information
+
+typedef struct {
+    char username[MAX_USERNAME_LENGTH];
+    char password[MAX_PASSWORD_LENGTH];
+} User;
+
+void register_auth(const char *filename, const User* user);
+int login(const char *filename, const char *fileTokenPath,const char *username, const char *password);
+
 typedef struct
 {
     char destination[MAX_DESTINATION];
