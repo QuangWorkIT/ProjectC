@@ -1,4 +1,4 @@
-*** Project of train C ***
+#Project of C
 
 Folder src: folder that contains detailed source code of the project.
 
