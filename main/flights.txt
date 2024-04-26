@@ -1,7 +1,0 @@
-Destination: cscsa
-Departure: cscs
-Takeoff time: ccsa
-Landing time: csa
-Airline: cs
-Flight time: cs
-Status: cs
