@@ -1,0 +1,8 @@
+Destination: HA Noi
+Departure: Da
+Takeoff time: 5AM
+Landing time: 10am
+Airline: bamboo
+Flight time: 3
+Status: on trip
+
